@@ -243,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize parallax effect
     initParallaxEffect();
 
+    // Initialize galaxy parallax interaction
+    initGalaxyParallax();
+
     // Form validation and enhancement (if contact form is added later)
     function enhanceContactForm() {
         const contactForm = document.querySelector('#contact-form');
@@ -358,6 +361,79 @@ document.addEventListener('DOMContentLoaded', function() {
                 'color: #3b82f6; font-size: 16px; font-weight: bold;');
     console.log('%cJika Anda tertarik untuk berkolaborasi, jangan ragu untuk menghubungi saya!', 
                 'color: #6b7280; font-size: 14px;');
+
+    // Galaxy parallax interaction
+    function initGalaxyParallax() {
+        const galaxyOverlay = document.querySelector('.galaxy-overlay');
+        const hero = document.querySelector('.hero');
+        
+        if (galaxyOverlay && hero) {
+            // Mouse movement parallax
+            hero.addEventListener('mousemove', throttle(function(e) {
+                const rect = hero.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) / 100;
+                const y = (e.clientY - rect.top - rect.height / 2) / 100;
+                
+                galaxyOverlay.style.transform = `translate(${x}px, ${y}px) rotate(${x * 0.1}deg)`;
+            }, 16));
+            
+            // Reset on mouse leave
+            hero.addEventListener('mouseleave', function() {
+                galaxyOverlay.style.transform = 'translate(0px, 0px) rotate(0deg)';
+            });
+            
+            // Enhanced scroll parallax for galaxy
+            window.addEventListener('scroll', throttle(function() {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.3;
+                const rotation = scrolled * 0.05;
+                
+                if (scrolled < window.innerHeight) {
+                    galaxyOverlay.style.transform = `translateY(${rate}px) rotate(${rotation}deg)`;
+                }
+            }, 16));
+        }
+    }
+
+    // Enhanced skill items animation on scroll
+    function enhanceSkillAnimations() {
+        const skillItems = document.querySelectorAll('.skill-item');
+        
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `skillSlideIn 0.6s ease-out forwards`;
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                    }, index * 100);
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        skillItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            skillObserver.observe(item);
+        });
+        
+        // Add CSS animation dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes skillSlideIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Initialize enhanced animations
+    if ('IntersectionObserver' in window) {
+        enhanceSkillAnimations();
+    }
 
     // Initialize all components
     console.log('✅ Portfolio website initialized successfully');
