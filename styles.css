@@ -1,15 +1,16 @@
-/* CSS Variables */
+/* CSS Variables - Dark Theme */
 :root {
-    --primary: #1f2937;
-    --secondary: #374151;
+    --primary: #e0e0e0;
+    --secondary: #a0a0a0;
     --accent: #3b82f6;
-    --white: #ffffff;
-    --light-gray: #f3f4f6;
-    --medium-gray: #9ca3af;
-    --dark-gray: #6b7280;
-    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --background: #181818;
+    --card-bg: #252525;
+    --light-gray: #333333;
+    --medium-gray: #555555;
+    --dark-gray: #777777;
+    --gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
 }
 
 /* Reset & Base Styles */
@@ -27,7 +28,7 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--primary);
-    background-color: var(--white);
+    background-color: var(--background);
 }
 
 .container {
@@ -42,7 +43,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(40, 40, 40, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     z-index: 1000;
@@ -183,25 +184,25 @@ body {
 }
 
 .btn-primary {
-    background: var(--white);
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--background);
 }
 
 .btn-primary:hover {
     background: transparent;
-    color: var(--white);
-    border-color: var(--white);
+    color: var(--primary);
+    border-color: var(--primary);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--white);
-    border-color: var(--white);
+    color: var(--primary);
+    border-color: var(--primary);
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--background);
 }
 
 /* Section Styles */
@@ -231,7 +232,7 @@ section {
 
 /* About Section */
 .about {
-    background: var(--light-gray);
+    background: var(--card-bg);
 }
 
 .about-text {
@@ -253,7 +254,7 @@ section {
 .highlight-item {
     text-align: center;
     padding: 2rem;
-    background: var(--white);
+    background: var(--background);
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
@@ -296,23 +297,25 @@ section {
 }
 
 .skill-item {
-    background: var(--light-gray);
+    background: var(--card-bg);
     padding: 1rem;
     border-radius: 8px;
     font-weight: 500;
     color: var(--secondary);
     transition: all 0.3s ease;
+    border: 1px solid var(--light-gray);
 }
 
 .skill-item:hover {
     background: var(--accent);
-    color: var(--white);
+    color: var(--background);
     transform: translateY(-2px);
+    border-color: var(--accent);
 }
 
 /* Experience Section */
 .experience {
-    background: var(--light-gray);
+    background: var(--background);
 }
 
 .experience-content {
@@ -321,11 +324,12 @@ section {
 }
 
 .experience-item {
-    background: var(--white);
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin-bottom: 2rem;
+    border: 1px solid var(--light-gray);
 }
 
 .experience-header {
@@ -354,11 +358,12 @@ section {
 }
 
 .job-period {
-    background: var(--light-gray);
+    background: var(--background);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--secondary);
+    border: 1px solid var(--light-gray);
 }
 
 .job-description ul {
@@ -389,11 +394,12 @@ section {
 }
 
 .project-card {
-    background: var(--white);
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    border: 1px solid var(--light-gray);
 }
 
 .project-card:hover {
@@ -421,17 +427,18 @@ section {
 }
 
 .tech-tag {
-    background: var(--light-gray);
+    background: var(--background);
     color: var(--secondary);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
+    border: 1px solid var(--light-gray);
 }
 
 /* Education Section */
 .education {
-    background: var(--light-gray);
+    background: var(--card-bg);
 }
 
 .education-content {
@@ -440,12 +447,13 @@ section {
 }
 
 .education-item {
-    background: var(--white);
+    background: var(--background);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
     text-align: center;
+    border: 1px solid var(--light-gray);
 }
 
 .degree {
@@ -463,11 +471,12 @@ section {
 }
 
 .education-period {
-    background: var(--light-gray);
+    background: var(--card-bg);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--secondary);
+    border: 1px solid var(--light-gray);
 }
 
 /* Certifications Section */
@@ -477,12 +486,13 @@ section {
 }
 
 .certification-item {
-    background: var(--white);
+    background: var(--background);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
     text-align: center;
+    border: 1px solid var(--light-gray);
 }
 
 .cert-title {
@@ -499,16 +509,17 @@ section {
 }
 
 .cert-date {
-    background: var(--light-gray);
+    background: var(--card-bg);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--secondary);
+    border: 1px solid var(--light-gray);
 }
 
 /* Contact Section */
 .contact {
-    background: var(--light-gray);
+    background: var(--card-bg);
 }
 
 .contact-intro {
@@ -527,11 +538,12 @@ section {
 }
 
 .contact-item {
-    background: var(--white);
+    background: var(--background);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
     text-align: center;
+    border: 1px solid var(--light-gray);
 }
 
 .contact-item h4 {
@@ -554,8 +566,8 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--primary);
-    color: var(--white);
+    background: var(--dark-gray);
+    color: var(--primary);
     padding: 2rem 0;
 }
 
@@ -573,7 +585,7 @@ section {
 }
 
 .footer-links a {
-    color: var(--white);
+    color: var(--primary);
     text-decoration: none;
     transition: opacity 0.3s ease;
 }
@@ -602,7 +614,7 @@ section {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background: var(--white);
+        background: var(--background);
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -642,6 +654,7 @@ section {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 0.8rem;
     }
 
     .section-title {
@@ -665,6 +678,21 @@ section {
     section {
         padding: 60px 0;
     }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -680,6 +708,11 @@ section {
         font-size: 1rem;
     }
 
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
     .section-title {
         font-size: 1.8rem;
     }
@@ -690,6 +723,50 @@ section {
 
     .skills-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .nav-container {
+        padding: 0 15px;
+    }
+
+    .experience-item,
+    .project-card,
+    .education-item,
+    .certification-item,
+    .contact-item {
+        padding: 1.5rem;
+    }
+
+    .hero-buttons .btn {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Additional responsive improvements */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .experience-item,
+    .project-card,
+    .education-item,
+    .certification-item,
+    .contact-item {
+        padding: 1rem;
     }
 }
 

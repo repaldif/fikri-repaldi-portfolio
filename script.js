@@ -109,11 +109,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateHeaderBackground() {
         const header = document.querySelector('.header');
         if (window.pageYOffset > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            header.style.background = 'rgba(40, 40, 40, 0.98)';
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
         } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+            header.style.background = 'rgba(40, 40, 40, 0.95)';
+            header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4)';
         }
     }
 
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: var(--accent);
-            color: white;
+            background: #3b82f6;
+            color: #e0e0e0;
             border: none;
             font-size: 20px;
             cursor: pointer;
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         `;
         
         document.body.appendChild(scrollToTopBtn);
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroTitle) {
             const text = heroTitle.textContent;
             heroTitle.textContent = '';
-            heroTitle.style.borderRight = '2px solid white';
+            heroTitle.style.borderRight = '2px solid #e0e0e0';
             
             let i = 0;
             const typeWriter = () => {
@@ -258,11 +258,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 successMessage.textContent = 'Pesan berhasil dikirim! Terima kasih.';
                 successMessage.style.cssText = `
                     background: #10b981;
-                    color: white;
+                    color: #e0e0e0;
                     padding: 1rem;
                     border-radius: 8px;
                     margin-top: 1rem;
                     text-align: center;
+                    border: 1px solid #333333;
                 `;
                 
                 contactForm.appendChild(successMessage);
