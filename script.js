@@ -435,6 +435,98 @@ document.addEventListener('DOMContentLoaded', function() {
         enhanceSkillAnimations();
     }
 
+    // Certificate Modal Functionality
+    function initCertificateModal() {
+        const certItems = document.querySelectorAll('.certification-item');
+        const certModal = document.getElementById('cert-modal');
+        const modalImg = document.getElementById('modal-image');
+        const closeModalBtn = document.querySelector('.close-modal');
+
+        if (!certModal || !modalImg || !closeModalBtn) {
+            console.warn('Certificate modal elements not found');
+            return;
+        }
+
+        // Add click event to each certificate item
+        certItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const imgUrl = this.getAttribute('data-img');
+                if (!imgUrl) {
+                    console.error('Certificate image URL is missing for:', this.querySelector('.cert-title')?.textContent);
+                    return;
+                }
+                
+                // Set image source and show modal
+                modalImg.src = imgUrl;
+                modalImg.alt = this.querySelector('.cert-title')?.textContent + ' Certificate';
+                certModal.classList.add('visible');
+                
+                // Prevent body scroll when modal is open
+                document.body.style.overflow = 'hidden';
+                
+                // Focus on close button for accessibility
+                closeModalBtn.focus();
+            });
+
+            // Add keyboard support for certificate items
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+
+            // Add tabindex for keyboard navigation
+            item.setAttribute('tabindex', '0');
+        });
+
+        // Close modal when clicking on the close button
+        closeModalBtn.addEventListener('click', function() {
+            closeCertModal();
+        });
+
+        // Close modal when clicking outside the modal content
+        certModal.addEventListener('click', function(e) {
+            if (e.target === certModal) {
+                closeCertModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && certModal.classList.contains('visible')) {
+                closeCertModal();
+            }
+        });
+
+        // Function to close certificate modal
+        function closeCertModal() {
+            certModal.classList.remove('visible');
+            document.body.style.overflow = 'auto';
+            
+            // Clear image source to prevent loading issues
+            setTimeout(() => {
+                if (!certModal.classList.contains('visible')) {
+                    modalImg.src = '';
+                }
+            }, 300);
+        }
+
+        // Handle image loading errors
+        modalImg.addEventListener('error', function() {
+            console.error('Failed to load certificate image:', this.src);
+            this.alt = 'Certificate image failed to load';
+        });
+
+        // Add loading state
+        modalImg.addEventListener('load', function() {
+            console.log('Certificate image loaded successfully');
+        });
+    }
+
+    // Initialize certificate modal
+    initCertificateModal();
+
     // Initialize all components
     console.log('✅ Portfolio website initialized successfully');
 });
